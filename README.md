@@ -14,6 +14,7 @@
   * [Android ViewModel lifecycle](#android-viewmodel-lifecycle)
 - [Install](#install)
   * [Compatibility](#compatibility)
+- [License](#license)
 
 ## Overview
 
