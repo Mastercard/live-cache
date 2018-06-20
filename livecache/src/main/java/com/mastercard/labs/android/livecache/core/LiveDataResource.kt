@@ -113,16 +113,18 @@ internal constructor(private val appExecutors: IAppExecutors,
                 if (!call.isSuccessful) {
                     result.postValue(processFailure())
                 } else {
-                    handleResponse(call)
                     val converted = convertResponse(call)
                     if (converted != null) {
-                        remoteData.postValue(CallResult(converted))
                         processResult(converted)
+                    }
+                    if (converted != null) {
+                        remoteData.postValue(CallResult(converted))
                     } else {
                         if (!preload) {
                             remoteData.postValue(null)
                         }
                     }
+                    handleResponse(call)
                 }
             } catch (t: Throwable) {
                 remoteData.postValue(CallResult(throwable = t))
